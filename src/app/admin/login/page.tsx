@@ -31,7 +31,8 @@ function LoginForm() {
       const success = await login(formData.username, formData.password);
       
       if (success) {
-        router.push('/admin');
+        // Use window.location.href for reliable navigation after login
+        window.location.href = '/admin';
       } else {
         setError('Invalid username or password');
       }
