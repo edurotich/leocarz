@@ -1,0 +1,109 @@
+<svg width="320" height="100" viewBox="0 0 320 100" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <!-- Gold gradient with metallic effect -->
+    <linearGradient id="goldGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#FFE55C;stop-opacity:1" />
+      <stop offset="30%" style="stop-color:#FFD700;stop-opacity:1" />
+      <stop offset="70%" style="stop-color:#FFA500;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#B8860B;stop-opacity:1" />
+    </linearGradient>
+    
+    <!-- Dark navy gradient -->
+    <linearGradient id="darkNavy" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#2C3E50;stop-opacity:1" />
+      <stop offset="50%" style="stop-color:#1A252F;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#0F1419;stop-opacity:1" />
+    </linearGradient>
+    
+    <!-- Shadow effect -->
+    <filter id="textShadow" x="-20%" y="-20%" width="140%" height="140%">
+      <feDropShadow dx="2" dy="2" stdDeviation="1" flood-color="#B8860B" flood-opacity="0.8"/>
+    </filter>
+    
+    <!-- Glow effect -->
+    <filter id="goldGlow" x="-50%" y="-50%" width="200%" height="200%">
+      <feGaussianBlur stdDeviation="3" result="coloredBlur"/>
+      <feMerge> 
+        <feMergeNode in="coloredBlur"/>
+        <feMergeNode in="SourceGraphic"/> 
+      </feMerge>
+    </filter>
+  </defs>
+  
+  <!-- Rearing Lion Silhouette (more accurate to your logo) -->
+  <g transform="translate(15, 8)">
+    <!-- Lion body - rearing position -->
+    <path d="M25 55 Q20 45 18 35 Q16 25 20 18 Q25 12 32 15 Q38 18 42 25 Q45 32 43 40 Q41 48 35 52 L32 58 Q28 60 25 55 Z" 
+          fill="url(#darkNavy)" stroke="url(#goldGradient)" stroke-width="2.5"/>
+    
+    <!-- Lion head and mane -->
+    <path d="M32 15 Q28 8 22 10 Q16 12 15 18 Q14 24 18 28 Q22 32 28 30 Q34 28 36 22 Q38 16 32 15 Z" 
+          fill="url(#darkNavy)" stroke="url(#goldGradient)" stroke-width="2"/>
+    
+    <!-- Lion mane details -->
+    <circle cx="22" cy="18" r="2" fill="url(#goldGradient)" opacity="0.9"/>
+    <circle cx="28" cy="14" r="1.5" fill="url(#goldGradient)" opacity="0.7"/>
+    <circle cx="32" cy="20" r="2.5" fill="url(#goldGradient)" opacity="0.8"/>
+    
+    <!-- Lion front legs -->
+    <path d="M28 45 L24 58 Q22 62 25 62 Q28 62 30 58 L32 48" 
+          fill="url(#darkNavy)" stroke="url(#goldGradient)" stroke-width="2"/>
+    
+    <!-- Lion rear legs -->
+    <path d="M35 50 L38 62 Q40 66 43 65 Q46 64 44 60 L40 52" 
+          fill="url(#darkNavy)" stroke="url(#goldGradient)" stroke-width="2"/>
+    
+    <!-- Lion tail -->
+    <path d="M42 48 Q48 45 52 48 Q55 52 52 55 Q48 58 45 55" 
+          fill="none" stroke="url(#goldGradient)" stroke-width="3" stroke-linecap="round"/>
+  </g>
+  
+  <!-- Large Circular "e" with car icon (matching your logo) -->
+  <g transform="translate(80, 10)">
+    <!-- Outer circle -->
+    <circle cx="40" cy="40" r="35" fill="none" stroke="url(#goldGradient)" stroke-width="4" filter="url(#goldGlow)"/>
+    
+    <!-- Inner circle for depth -->
+    <circle cx="40" cy="40" r="30" fill="url(#darkNavy)" stroke="url(#goldGradient)" stroke-width="2"/>
+    
+    <!-- Large letter "e" -->
+    <text x="40" y="52" font-family="Georgia, Times, serif" font-size="36" font-weight="bold" 
+          fill="url(#goldGradient)" text-anchor="middle" filter="url(#textShadow)">e</text>
+    
+    <!-- Prominent car icon inside the "e" -->
+    <g transform="translate(32, 38) scale(0.8)">
+      <!-- Car body -->
+      <rect x="2" y="4" width="16" height="8" rx="2" fill="url(#goldGradient)" stroke="url(#darkNavy)" stroke-width="1"/>
+      <!-- Car windows -->
+      <rect x="4" y="2" width="4" height="4" rx="1" fill="url(#darkNavy)"/>
+      <rect x="10" y="2" width="4" height="4" rx="1" fill="url(#darkNavy)"/>
+      <!-- Car wheels -->
+      <circle cx="6" cy="13" r="2" fill="url(#darkNavy)" stroke="url(#goldGradient)" stroke-width="1"/>
+      <circle cx="14" cy="13" r="2" fill="url(#darkNavy)" stroke="url(#goldGradient)" stroke-width="1"/>
+    </g>
+  </g>
+  
+  <!-- Bold 3D "LEO CARS" text (matching your logo style) -->
+  <g transform="translate(10, 75)">
+    <!-- Shadow layer -->
+    <text font-family="Impact, Arial Black, sans-serif" font-size="18" font-weight="900" letter-spacing="3px">
+      <tspan x="2" y="2" fill="#0F1419" opacity="0.6">LEO</tspan>
+      <tspan x="70" y="2" fill="#0F1419" opacity="0.6">🚗</tspan>
+      <tspan x="95" y="2" fill="#0F1419" opacity="0.6">CARS</tspan>
+    </text>
+    
+    <!-- Main text -->
+    <text font-family="Impact, Arial Black, sans-serif" font-size="18" font-weight="900" letter-spacing="3px" filter="url(#textShadow)">
+      <tspan x="0" y="0" fill="url(#goldGradient)">LEO</tspan>
+      <tspan x="68" y="0" fill="url(#goldGradient)">🚗</tspan>
+      <tspan x="93" y="0" fill="url(#goldGradient)">CARS</tspan>
+    </text>
+    
+    <!-- Highlight layer for 3D effect -->
+    <text font-family="Impact, Arial Black, sans-serif" font-size="18" font-weight="900" letter-spacing="3px">
+      <tspan x="0" y="-1" fill="#FFE55C" opacity="0.8">LEO</tspan>
+      <tspan x="68" y="-1" fill="#FFE55C" opacity="0.8">🚗</tspan>
+      <tspan x="93" y="-1" fill="#FFE55C" opacity="0.8">CARS</tspan>
+    </text>
+  </g>
+</svg>

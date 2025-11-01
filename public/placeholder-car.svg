@@ -1,0 +1,20 @@
+<svg width="400" height="300" viewBox="0 0 400 300" fill="none" xmlns="http://www.w3.org/2000/svg">
+<rect width="400" height="300" fill="#F3F4F6"/>
+<g transform="translate(100 75)">
+<!-- Car body -->
+<rect x="20" y="80" width="160" height="60" fill="#4A5568" rx="10"/>
+<!-- Car roof -->
+<rect x="40" y="40" width="120" height="40" fill="#4A5568" rx="8"/>
+<!-- Windows -->
+<rect x="50" y="50" width="30" height="20" fill="#E2E8F0" rx="2"/>
+<rect x="120" y="50" width="30" height="20" fill="#E2E8F0" rx="2"/>
+<!-- Wheels -->
+<circle cx="50" cy="150" r="15" fill="#2D3748"/>
+<circle cx="150" cy="150" r="15" fill="#2D3748"/>
+<circle cx="50" cy="150" r="8" fill="#4A5568"/>
+<circle cx="150" cy="150" r="8" fill="#4A5568"/>
+</g>
+<text x="200" y="200" font-family="Arial" font-size="14" fill="#6B7280" text-anchor="middle">
+No Image Available
+</text>
+</svg>
