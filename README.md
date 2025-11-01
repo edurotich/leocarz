@@ -225,3 +225,6 @@ Contributions are welcome! Please feel free to submit a Pull Request.
 ---
 
 **Happy selling! 🚗💨**
+
+---
+*Last updated: November 2025 - Admin form enhanced with smart dropdowns*
