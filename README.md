@@ -1,6 +1,6 @@
-# Car Yard Website
+# leocarz Website
 
-A modern, responsive car selling and yard management website built with Next.js 14, Supabase, and Tailwind CSS.
+A modern, responsive car selling and yard management website built for **leocarz** with Next.js 14, Supabase, and Tailwind CSS.
 
 ## 🚀 Features
 
@@ -140,7 +140,7 @@ The database schema is automatically created when you run the SQL script from `s
 
 ### Environment Variables for Production
 
-Make sure to add these environment variables in your deployment platform:
+Make sure to add these environment variables in your deployment platform for **leocarz**:
 
 ```env
 NEXT_PUBLIC_SUPABASE_URL=your_supabase_project_url

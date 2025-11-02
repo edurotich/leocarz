@@ -1,4 +1,4 @@
-# Car Yard Website - Next.js 14 + Supabase
+# leocarz Website - Next.js 14 + Supabase
 
 ## Project Overview
 A car selling and yard tracking website built with Next.js 14, Supabase, and Tailwind CSS. Features include car listings, admin dashboard, image management, and responsive design.

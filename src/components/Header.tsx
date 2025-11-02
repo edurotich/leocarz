@@ -36,11 +36,12 @@ export default function Header() {
           <Link 
             href="/" 
             className="flex items-center space-x-3 group"
+            aria-label="leocarz homepage"
           >
             <div className="relative transition-transform duration-300 group-hover:scale-105">
               <img 
                 src="/images/logo.svg" 
-                alt="LoeCarZ Logo" 
+                alt="leocarz Logo" 
                 className="h-12 w-auto"
               />
             </div>
