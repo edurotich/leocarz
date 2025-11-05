@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import "./globals.css";
+import GetHelpButton from '@/components/GetHelpButton';
 
 export const metadata: Metadata = {
   title: "leocarz - Quality Cars for Sale",
@@ -20,6 +21,7 @@ export default function RootLayout({
     <html lang="en">
       <body className="antialiased">
         {children}
+        <GetHelpButton />
       </body>
     </html>
   );

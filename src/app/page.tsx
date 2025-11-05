@@ -129,12 +129,7 @@ export default function HomePage() {
               <span className="text-sm font-bold text-slate-800">NTSA Licensed</span>
             </div>
             
-            <div className="flex items-center space-x-2 bg-white rounded-xl px-4 py-2 shadow-md border border-slate-100">
-              <div className="w-8 h-8 bg-gradient-to-br from-purple-500 to-indigo-600 rounded-lg flex items-center justify-center shadow-sm">
-                <span className="text-white text-xs font-black">AA</span>
-              </div>
-              <span className="text-sm font-bold text-slate-800">AA Partner</span>
-            </div>
+
           </div>
         </div>
 
