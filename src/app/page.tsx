@@ -434,9 +434,9 @@ export default function HomePage() {
               {/* Contact Info */}
               <div className="mt-8 pt-6 border-t border-slate-700">
                 <div className="space-y-2 text-sm">
-                  <p className="text-slate-400">📞 +254 700 000 000</p>
-                  <p className="text-slate-400">✉️ info@leocars.co.ke</p>
-                  <p className="text-slate-400">📍 Nairobi, Kenya</p>
+                  <p className="text-slate-400">📞 +254 725 785 122</p>
+                  <p className="text-slate-400">✉️ info@leocarz.com</p>
+                  <p className="text-slate-400">📍 Eldoret, Kenya</p>
                 </div>
               </div>
             </div>
