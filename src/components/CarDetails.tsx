@@ -281,7 +281,7 @@ export default function CarDetails({ car }: CarDetailsProps) {
                     </div>
                     <div>
                       <p className="font-semibold text-slate-900">Phone</p>
-                      <p className="text-slate-600">+254 712 345 678</p>
+                      <p className="text-slate-600">+254 725 785 122</p>
                     </div>
                   </div>
                   <div className="flex items-center space-x-3 p-4 bg-white/60 backdrop-blur-sm rounded-xl">
@@ -292,7 +292,7 @@ export default function CarDetails({ car }: CarDetailsProps) {
                     </div>
                     <div>
                       <p className="font-semibold text-slate-900">Email</p>
-                      <p className="text-slate-600">info@loecarz.co.ke</p>
+                      <p className="text-slate-600">info@leocarz.com</p>
                     </div>
                   </div>
                 </div>
