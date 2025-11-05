@@ -7,6 +7,7 @@ import { supabase } from '@/lib/supabase';
 import { Car } from '@/types/database';
 import Header from '@/components/Header';
 import CarDetails from '@/components/CarDetails';
+import CarJsonLd from '@/components/CarJsonLd';
 
 export default function CarPageClient() {
   const params = useParams();
@@ -171,6 +172,7 @@ export default function CarPageClient() {
 
   return (
     <div className="min-h-screen bg-gray-50">
+      <CarJsonLd car={car} />
       <Header />
       <CarDetails car={car} />
     </div>
