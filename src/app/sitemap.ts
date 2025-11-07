@@ -1,11 +1,10 @@
 import { MetadataRoute } from 'next'
-import { createClient } from '@/lib/supabase'
+import { supabase } from '@/lib/supabase'
 
 export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
   const baseUrl = 'https://leocarz.com'
 
   // Get all cars from the database
-  const supabase = createClient()
   const { data: cars } = await supabase
     .from('cars')
     .select('id')

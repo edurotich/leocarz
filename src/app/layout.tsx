@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import "./globals.css";
 import GetHelpButton from '@/components/GetHelpButton';
 import JsonLd from '@/components/JsonLd';
+import { Analytics } from '@vercel/analytics/react';
 
 export const metadata: Metadata = {
   title: "LeoCarZ - Premium Cars for Sale in Eldoret, Kenya",
@@ -76,6 +77,7 @@ export default function RootLayout({
         <JsonLd />
         {children}
         <GetHelpButton />
+        <Analytics />
       </body>
     </html>
   );
