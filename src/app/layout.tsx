@@ -3,7 +3,6 @@ import "./globals.css";
 import GetHelpButton from '@/components/GetHelpButton';
 import JsonLd from '@/components/JsonLd';
 import { Analytics } from '@vercel/analytics/react';
-import AdSenseScript from '@/components/ads/AdSenseScript';
 
 export const metadata: Metadata = {
   title: "LeoCarZ - Premium Cars for Sale in Eldoret, Kenya",
@@ -76,10 +75,10 @@ export default function RootLayout({
     <html lang="en">
       <head>
         <meta name="google-adsense-account" content="ca-pub-6333059555540167" />
+        <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-6333059555540167" crossOrigin="anonymous"></script>
       </head>
       <body className="antialiased">
         <JsonLd />
-        <AdSenseScript />
         {children}
         <GetHelpButton />
         <Analytics />
