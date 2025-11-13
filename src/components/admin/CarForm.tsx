@@ -3,6 +3,7 @@
 import { useState } from 'react';
 import { supabase, uploadCarImage, deleteCarImage } from '@/lib/supabase';
 import { Car, CarInsert } from '@/types/database';
+import ImageReorder from './ImageReorder';
 
 // Smart dropdown data
 const CAR_MAKES = [
@@ -128,6 +129,14 @@ export default function CarForm({ car, onClose, onSaved }: CarFormProps) {
     const imageToRemove = existingImages[index];
     setExistingImages(prev => prev.filter((_, i) => i !== index));
     setImagesToDelete(prev => [...prev, imageToRemove]);
+  };
+
+  const handleImageReorder = (reorderedImages: string[]) => {
+    setExistingImages(reorderedImages);
+  };
+
+  const handleNewImageReorder = (reorderedImages: File[]) => {
+    setImages(reorderedImages);
   };
 
   const handleSubmit = async (e: React.FormEvent) => {
@@ -635,64 +644,61 @@ export default function CarForm({ car, onClose, onSaved }: CarFormProps) {
                 📸 Car Images
               </h3>
               
-              {/* Current Images */}
+              {/* Current Images with Reorder */}
               {existingImages.length > 0 && (
                 <div className="mb-6">
-                  <h4 className="text-sm font-semibold text-gray-700 mb-3 flex items-center">
-                    🖼️ Current Images ({existingImages.length})
-                  </h4>
-                  <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-3">
-                    {existingImages.map((image, index) => (
-                      <div key={index} className="relative group">
-                        <img
-                          src={image}
-                          alt={`Car ${index + 1}`}
-                          className="w-full h-28 object-cover rounded-lg border-2 border-gray-200 shadow-sm group-hover:shadow-md transition-shadow"
-                        />
-                        <button
-                          type="button"
-                          onClick={() => removeExistingImage(index)}
-                          className="absolute -top-2 -right-2 bg-red-500 text-white rounded-full w-7 h-7 flex items-center justify-center text-sm hover:bg-red-600 focus:ring-2 focus:ring-red-400 transition-colors"
-                          title="Remove image"
-                        >
-                          ×
-                        </button>
-                        <div className="absolute bottom-2 left-2 bg-black bg-opacity-50 text-white text-xs px-2 py-1 rounded">
-                          #{index + 1}
-                        </div>
-                      </div>
-                    ))}
-                  </div>
+                  <ImageReorder
+                    images={existingImages}
+                    onReorder={handleImageReorder}
+                    onRemove={removeExistingImage}
+                    className="mb-4"
+                  />
                 </div>
               )}
 
-              {/* New Images to Upload */}
+              {/* New Images to Upload with Reorder */}
               {images.length > 0 && (
                 <div className="mb-6">
-                  <h4 className="text-sm font-semibold text-gray-700 mb-3 flex items-center">
-                    ⬆️ New Images to Upload ({images.length})
-                  </h4>
-                  <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-3">
-                    {images.map((image, index) => (
-                      <div key={index} className="relative group">
-                        <img
-                          src={URL.createObjectURL(image)}
-                          alt={`New ${index + 1}`}
-                          className="w-full h-28 object-cover rounded-lg border-2 border-blue-200 shadow-sm group-hover:shadow-md transition-shadow"
-                        />
-                        <button
-                          type="button"
-                          onClick={() => removeNewImage(index)}
-                          className="absolute -top-2 -right-2 bg-red-500 text-white rounded-full w-7 h-7 flex items-center justify-center text-sm hover:bg-red-600 focus:ring-2 focus:ring-red-400 transition-colors"
-                          title="Remove image"
-                        >
-                          ×
-                        </button>
-                        <div className="absolute bottom-2 left-2 bg-blue-500 bg-opacity-80 text-white text-xs px-2 py-1 rounded">
-                          NEW
-                        </div>
+                  <div className="space-y-4">
+                    <div className="flex items-center justify-between">
+                      <h4 className="text-sm font-semibold text-gray-700 flex items-center">
+                        <svg className="w-4 h-4 mr-2 text-blue-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M7 16V4m0 0L3 8m4-4l4 4m6 0v12m0 0l4-4m-4 4l-4-4" />
+                        </svg>
+                        New Images to Upload ({images.length})
+                      </h4>
+                      <div className="text-xs text-gray-500 bg-blue-50 px-2 py-1 rounded">
+                        These will be uploaded after saving
                       </div>
-                    ))}
+                    </div>
+
+                    <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-3">
+                      {images.map((image, index) => (
+                        <div key={`new-${index}`} className="relative group cursor-move">
+                          <div className="relative overflow-hidden rounded-lg border-2 border-blue-200 hover:border-blue-300 transition-all">
+                            <img
+                              src={URL.createObjectURL(image)}
+                              alt={`New ${index + 1}`}
+                              className="w-full h-28 object-cover"
+                              draggable={false}
+                            />
+                            
+                            <div className="absolute top-2 left-2 bg-blue-500 text-white text-xs font-bold px-2 py-1 rounded shadow-sm">
+                              NEW #{index + 1}
+                            </div>
+
+                            <button
+                              type="button"
+                              onClick={() => removeNewImage(index)}
+                              className="absolute top-2 right-2 w-6 h-6 bg-red-500 hover:bg-red-600 text-white rounded-full flex items-center justify-center text-sm transition-colors opacity-0 group-hover:opacity-100"
+                              title="Remove image"
+                            >
+                              ×
+                            </button>
+                          </div>
+                        </div>
+                      ))}
+                    </div>
                   </div>
                 </div>
               )}
