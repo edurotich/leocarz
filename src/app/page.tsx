@@ -49,7 +49,10 @@ export default function HomePage() {
               
               {/* Compact CTA Buttons */}
               <div className="flex flex-col sm:flex-row gap-3 justify-center items-center mb-8">
-                <button className="group relative px-6 py-3 bg-gradient-to-r from-sky-500 to-blue-600 text-white font-bold rounded-xl shadow-xl shadow-sky-500/25 hover:shadow-sky-500/40 hover:scale-105 transition-all duration-300 overflow-hidden">
+                <a 
+                  href="#featured-cars"
+                  className="group relative px-6 py-3 bg-gradient-to-r from-sky-500 to-blue-600 text-white font-bold rounded-xl shadow-xl shadow-sky-500/25 hover:shadow-sky-500/40 hover:scale-105 transition-all duration-300 overflow-hidden"
+                >
                   <span className="relative z-10 flex items-center text-sm">
                     <svg className="w-4 h-4 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                       <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
@@ -59,7 +62,7 @@ export default function HomePage() {
                       <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 8l4 4m0 0l-4 4m4-4H3" />
                     </svg>
                   </span>
-                </button>
+                </a>
                 
                 <button className="px-6 py-3 bg-white/10 backdrop-blur-md text-white font-semibold rounded-xl border border-white/20 hover:bg-white/20 hover:border-white/40 transition-all duration-300 flex items-center text-sm">
                   <svg className="w-4 h-4 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -169,7 +172,7 @@ export default function HomePage() {
 
 
         {/* Featured Cars Section */}
-        <section>
+        <section id="featured-cars">
           <div className="flex flex-col lg:flex-row lg:justify-between lg:items-center mb-8 gap-4">
             <div>
               <h3 className="text-3xl lg:text-4xl font-bold text-slate-900 mb-2">Latest Arrivals</h3>
@@ -182,12 +185,15 @@ export default function HomePage() {
                 <span>Updated hourly</span>
               </div>
               
-              <button className="group bg-gradient-to-r from-sky-600 to-blue-600 hover:from-sky-700 hover:to-blue-700 text-white font-semibold px-6 py-3 rounded-2xl flex items-center transition-all duration-300 shadow-lg hover:shadow-xl hover:-translate-y-0.5">
+              <a 
+                href="#featured-cars"
+                className="group bg-gradient-to-r from-sky-600 to-blue-600 hover:from-sky-700 hover:to-blue-700 text-white font-semibold px-6 py-3 rounded-2xl flex items-center transition-all duration-300 shadow-lg hover:shadow-xl hover:-translate-y-0.5"
+              >
                 <span>View All Cars</span>
                 <svg className="w-5 h-5 ml-2 group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 8l4 4m0 0l-4 4m4-4H3" />
                 </svg>
-              </button>
+              </a>
             </div>
           </div>
 
@@ -270,7 +276,10 @@ export default function HomePage() {
               </p>
               
               <div className="flex flex-col sm:flex-row gap-6 justify-center items-center">
-                <button className="group relative px-10 py-5 bg-gradient-to-r from-sky-500 to-blue-600 text-white font-bold text-lg rounded-2xl shadow-2xl shadow-sky-500/30 hover:shadow-sky-500/50 hover:scale-105 transition-all duration-500 overflow-hidden">
+                <a 
+                  href="#featured-cars"
+                  className="group relative px-10 py-5 bg-gradient-to-r from-sky-500 to-blue-600 text-white font-bold text-lg rounded-2xl shadow-2xl shadow-sky-500/30 hover:shadow-sky-500/50 hover:scale-105 transition-all duration-500 overflow-hidden"
+                >
                   <div className="absolute inset-0 bg-gradient-to-r from-sky-400 to-blue-500 opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
                   <span className="relative z-10 flex items-center">
                     <svg className="w-6 h-6 mr-3" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -281,7 +290,7 @@ export default function HomePage() {
                       <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 8l4 4m0 0l-4 4m4-4H3" />
                     </svg>
                   </span>
-                </button>
+                </a>
                 
                 <button className="group px-10 py-5 bg-white/10 backdrop-blur-md text-white font-semibold text-lg rounded-2xl border-2 border-white/20 hover:bg-white/20 hover:border-white/40 transition-all duration-300 flex items-center">
                   <svg className="w-6 h-6 mr-3" fill="none" stroke="currentColor" viewBox="0 0 24 24">
