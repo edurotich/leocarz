@@ -11,7 +11,7 @@ export default function JsonLd() {
     '@type': 'AutoDealer',
     name: 'LeoCarZ',
     url: baseUrl,
-    logo: `${baseUrl}/images/logo.svg`,
+    logo: `${baseUrl}/images/logo.png`,
     description: 'Premium car dealership in Eldoret, Kenya offering quality new and used vehicles with exceptional customer service.',
     address: {
       '@type': 'PostalAddress',
