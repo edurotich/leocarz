@@ -40,9 +40,9 @@ export default function Header() {
           >
             <div className="relative transition-transform duration-300 group-hover:scale-105">
               <img 
-                src="/images/logo.svg" 
-                alt="leocarz Logo" 
-                className="h-12 w-auto"
+                src="/images/logo.png" 
+                alt="LeoCarZ Logo" 
+                className="h-14 w-auto"
               />
             </div>
           </Link>
@@ -58,26 +58,6 @@ export default function Header() {
               }`}
             >
               Browse Cars
-            </Link>
-            <Link 
-              href="/terms" 
-              className={`px-4 py-2 rounded-xl font-semibold text-sm transition-all duration-300 ${
-                pathname === '/terms' 
-                  ? 'bg-slate-100 text-slate-900 shadow-sm' 
-                  : 'text-slate-600 hover:text-slate-900 hover:bg-slate-50'
-              }`}
-            >
-              Terms
-            </Link>
-            <Link 
-              href="/privacy" 
-              className={`px-4 py-2 rounded-xl font-semibold text-sm transition-all duration-300 ${
-                pathname === '/privacy' 
-                  ? 'bg-slate-100 text-slate-900 shadow-sm' 
-                  : 'text-slate-600 hover:text-slate-900 hover:bg-slate-50'
-              }`}
-            >
-              Privacy
             </Link>
             <div className="w-px h-6 bg-slate-200 mx-2"></div>
             {pathname.startsWith('/admin') && pathname !== '/admin/login' ? (
@@ -135,28 +115,6 @@ export default function Header() {
                 onClick={() => setIsMobileMenuOpen(false)}
               >
                 Browse Cars
-              </Link>
-              <Link 
-                href="/terms" 
-                className={`px-4 py-3 rounded-xl font-semibold text-sm transition-all ${
-                  pathname === '/terms' 
-                    ? 'bg-slate-100 text-slate-900' 
-                    : 'text-slate-600 hover:text-slate-900 hover:bg-slate-50'
-                }`}
-                onClick={() => setIsMobileMenuOpen(false)}
-              >
-                Terms of Service
-              </Link>
-              <Link 
-                href="/privacy" 
-                className={`px-4 py-3 rounded-xl font-semibold text-sm transition-all ${
-                  pathname === '/privacy' 
-                    ? 'bg-slate-100 text-slate-900' 
-                    : 'text-slate-600 hover:text-slate-900 hover:bg-slate-50'
-                }`}
-                onClick={() => setIsMobileMenuOpen(false)}
-              >
-                Privacy Policy
               </Link>
               {pathname.startsWith('/admin') && pathname !== '/admin/login' ? (
                 <button 
