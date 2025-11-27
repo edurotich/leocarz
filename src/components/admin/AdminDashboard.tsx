@@ -6,11 +6,13 @@ import { Car } from '@/types/database';
 import CarForm from './CarForm';
 import CarListAdmin from './CarListAdmin';
 import DatabaseDebugger from './DatabaseDebugger';
+import SalesAgreementForm from './SalesAgreementForm';
 
 export default function AdminDashboard() {
   const [cars, setCars] = useState<Car[]>([]);
   const [loading, setLoading] = useState(true);
   const [showForm, setShowForm] = useState(false);
+  const [showSalesAgreement, setShowSalesAgreement] = useState(false);
   const [editingCar, setEditingCar] = useState<Car | null>(null);
 
   useEffect(() => {
@@ -130,15 +132,26 @@ export default function AdminDashboard() {
             </p>
           </div>
           
-          <button
-            onClick={handleAddCar}
-            className="btn-primary text-base px-8 py-4"
-          >
-            <svg className="w-5 h-5 mr-3" fill="currentColor" viewBox="0 0 20 20">
-              <path fillRule="evenodd" d="M10 3a1 1 0 011 1v5h5a1 1 0 110 2h-5v5a1 1 0 11-2 0v-5H4a1 1 0 110-2h5V4a1 1 0 011-1z" clipRule="evenodd" />
-            </svg>
-            Add New Car
-          </button>
+          <div className="flex flex-col sm:flex-row gap-3">
+            <button
+              onClick={() => setShowSalesAgreement(true)}
+              className="btn-secondary text-base px-6 py-3 border-blue-200 text-blue-700 hover:bg-blue-50"
+            >
+              <svg className="w-5 h-5 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" />
+              </svg>
+              Sales Agreement
+            </button>
+            <button
+              onClick={handleAddCar}
+              className="btn-primary text-base px-8 py-4"
+            >
+              <svg className="w-5 h-5 mr-3" fill="currentColor" viewBox="0 0 20 20">
+                <path fillRule="evenodd" d="M10 3a1 1 0 011 1v5h5a1 1 0 110 2h-5v5a1 1 0 11-2 0v-5H4a1 1 0 110-2h5V4a1 1 0 011-1z" clipRule="evenodd" />
+              </svg>
+              Add New Car
+            </button>
+          </div>
         </div>
 
         {/* Database Debugger */}
@@ -233,6 +246,14 @@ export default function AdminDashboard() {
             car={editingCar}
             onClose={handleCloseForm}
             onSaved={handleCarSaved}
+          />
+        )}
+
+        {/* Sales Agreement Form Modal */}
+        {showSalesAgreement && (
+          <SalesAgreementForm
+            cars={cars}
+            onClose={() => setShowSalesAgreement(false)}
           />
         )}
 

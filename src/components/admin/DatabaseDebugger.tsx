@@ -94,14 +94,6 @@ export default function DatabaseDebugger() {
         >
           {loading ? 'Testing...' : 'Test Connection'}
         </button>
-        
-        <button
-          onClick={addSampleCar}
-          disabled={loading}
-          className="bg-green-600 text-white px-4 py-2 rounded hover:bg-green-700 disabled:opacity-50"
-        >
-          {loading ? 'Adding...' : 'Add Sample Car'}
-        </button>
       </div>
 
       {results && (
