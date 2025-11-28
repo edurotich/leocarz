@@ -1,7 +1,8 @@
 'use client';
 
-import { useState, useRef } from 'react';
-import { Car } from '@/types/database';
+import { useState, useRef, useEffect } from 'react';
+import { supabase } from '@/lib/supabase';
+import { Car, SalesAgreement, SalesAgreementInsert } from '@/types/database';
 
 interface SalesAgreementFormProps {
   cars: Car[];
@@ -35,6 +36,16 @@ export default function SalesAgreementForm({ cars, onClose }: SalesAgreementForm
   const printRef = useRef<HTMLDivElement>(null);
   const [selectedCarId, setSelectedCarId] = useState<string>('');
   const [showPreview, setShowPreview] = useState(false);
+  const [saving, setSaving] = useState(false);
+  const [savedAgreementId, setSavedAgreementId] = useState<string | null>(null);
+  const [agreementNumber] = useState(() => {
+    const date = new Date();
+    const year = date.getFullYear();
+    const month = (date.getMonth() + 1).toString().padStart(2, '0');
+    const day = date.getDate().toString().padStart(2, '0');
+    const time = Date.now().toString().slice(-4);
+    return `LCA-${year}${month}${day}-${time}`;
+  });
   
   const [seller, setSeller] = useState<PartyDetails>({
     fullName: '',
@@ -175,6 +186,88 @@ export default function SalesAgreementForm({ cars, onClose }: SalesAgreementForm
     setTimeout(() => {
       printWindow.print();
     }, 250);
+  };
+
+  const handleSaveAgreement = async () => {
+    if (!selectedCarId || !seller.fullName || !buyer.fullName) {
+      alert('Please fill in all required fields before saving.');
+      return;
+    }
+
+    setSaving(true);
+    try {
+      const selectedCar = cars.find(car => car.id === selectedCarId);
+      if (!selectedCar) {
+        throw new Error('Selected car not found');
+      }
+
+      const agreementData: SalesAgreementInsert = {
+        agreement_number: agreementNumber,
+        car_id: selectedCarId,
+        
+        // Car details snapshot
+        car_make: selectedCar.make,
+        car_model: selectedCar.model,
+        car_year: selectedCar.year,
+        car_mileage: selectedCar.mileage,
+        car_color: selectedCar.color,
+        car_condition: selectedCar.condition,
+        car_transmission: selectedCar.transmission,
+        car_fuel_type: selectedCar.fuel_type,
+        
+        // Seller information
+        seller_name: seller.fullName,
+        seller_id_number: seller.idNumber,
+        seller_id_type: seller.idType === 'national_id' ? 'National ID' : 'Passport',
+        seller_phone: seller.phone,
+        seller_email: seller.email,
+        seller_address: seller.address,
+        
+        // Buyer information
+        buyer_name: buyer.fullName,
+        buyer_id_number: buyer.idNumber,
+        buyer_id_type: buyer.idType === 'national_id' ? 'National ID' : 'Passport',
+        buyer_phone: buyer.phone,
+        buyer_email: buyer.email,
+        buyer_address: buyer.address,
+        
+        // Sale details
+        sale_price: agreement.salePrice,
+        deposit_amount: agreement.depositAmount,
+        balance_amount: agreement.balanceAmount,
+        payment_method: agreement.paymentMethod,
+        
+        // Witness information
+        witness_name: agreement.witnessName,
+        witness_id: agreement.witnessId,
+        witness_phone: agreement.witnessPhone,
+        
+        // Agreement details
+        sale_date: agreement.saleDate,
+        transfer_date: agreement.transferDate,
+        additional_terms: agreement.additionalTerms,
+        status: 'active'
+      };
+
+      const { data, error } = await supabase
+        .from('sales_agreements')
+        .insert([agreementData])
+        .select()
+        .single();
+
+      if (error) {
+        throw error;
+      }
+
+      setSavedAgreementId(data.id);
+      alert(`Agreement saved successfully! Agreement Number: ${agreementNumber}`);
+      
+    } catch (error) {
+      console.error('Error saving agreement:', error);
+      alert('Failed to save agreement. Please try again.');
+    } finally {
+      setSaving(false);
+    }
   };
 
   const formatCurrency = (amount: number) => {
@@ -561,11 +654,33 @@ export default function SalesAgreementForm({ cars, onClose }: SalesAgreementForm
             /* Print Preview */
             <div ref={printRef} className="bg-white p-8">
               <div className="header">
-                <h1>VEHICLE SALES AGREEMENT</h1>
-                <h2>LeoCarZ - Premium Car Dealership</h2>
-                <p style={{ marginTop: '10px', fontSize: '12px', color: '#666' }}>
-                  Agreement Date: {formatDate(agreement.saleDate)}
-                </p>
+                <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', marginBottom: '20px' }}>
+                  <img 
+                    src="/images/logo.png" 
+                    alt="LeoCarZ Logo" 
+                    style={{ height: '60px', marginRight: '20px' }}
+                  />
+                  <div style={{ textAlign: 'center' }}>
+                    <h1>VEHICLE SALES AGREEMENT</h1>
+                    <h2>LeoCarZ - Premium Car Dealership</h2>
+                  </div>
+                </div>
+                <div style={{ 
+                  display: 'flex', 
+                  justifyContent: 'space-between', 
+                  marginTop: '15px',
+                  padding: '10px',
+                  backgroundColor: '#f8f9fa',
+                  border: '1px solid #dee2e6',
+                  borderRadius: '5px'
+                }}>
+                  <div>
+                    <strong>Agreement No:</strong> {agreementNumber}
+                  </div>
+                  <div>
+                    <strong>Date:</strong> {formatDate(agreement.saleDate)}
+                  </div>
+                </div>
               </div>
 
               {/* Vehicle Details */}
@@ -764,9 +879,21 @@ export default function SalesAgreementForm({ cars, onClose }: SalesAgreementForm
               )}
 
               <div className="footer">
-                <p>This document was generated by LeoCarZ Vehicle Sales Management System</p>
-                <p>For inquiries: +254 725 785 122 | info@leocarz.com | www.leocarz.com</p>
-                <p>Eldoret, Kenya</p>
+                <div style={{ textAlign: 'center', marginBottom: '10px' }}>
+                  <img 
+                    src="/images/logo.png" 
+                    alt="LeoCarZ Logo" 
+                    style={{ height: '40px', display: 'inline-block' }}
+                  />
+                </div>
+                <p><strong>LeoCarZ - Premium Car Dealership</strong></p>
+                <p>📧 info@leocarz.com | 📱 +254 725 785 122 | 🌐 www.leocarz.com</p>
+                <p>📍 Eldoret, Kenya</p>
+                <hr style={{ margin: '10px 0', border: 'none', borderTop: '1px solid #ccc' }} />
+                <p style={{ fontSize: '10px', fontStyle: 'italic' }}>
+                  This is a legally binding agreement. Both parties are advised to keep copies for their records.<br />
+                  Generated on {new Date().toLocaleDateString('en-KE')} | Agreement #: {agreementNumber}
+                </p>
               </div>
             </div>
           )}
@@ -796,15 +923,27 @@ export default function SalesAgreementForm({ cars, onClose }: SalesAgreementForm
               Cancel
             </button>
             {showPreview && (
-              <button
-                onClick={handlePrint}
-                className="px-6 py-2 bg-gradient-to-r from-blue-600 to-blue-800 text-white rounded-xl hover:from-blue-700 hover:to-blue-900 transition-colors flex items-center"
-              >
-                <svg className="w-5 h-5 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 17h2a2 2 0 002-2v-4a2 2 0 00-2-2H5a2 2 0 00-2 2v4a2 2 0 002 2h2m2 4h6a2 2 0 002-2v-4a2 2 0 00-2-2H9a2 2 0 00-2 2v4a2 2 0 002 2zm8-12V5a2 2 0 00-2-2H9a2 2 0 00-2 2v4h10z" />
-                </svg>
-                Print Agreement
-              </button>
+              <>
+                <button
+                  onClick={handleSaveAgreement}
+                  disabled={saving}
+                  className="px-6 py-2 bg-gradient-to-r from-green-600 to-green-800 text-white rounded-xl hover:from-green-700 hover:to-green-900 transition-colors flex items-center disabled:opacity-50 disabled:cursor-not-allowed"
+                >
+                  <svg className="w-5 h-5 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M8 7H5a2 2 0 00-2 2v9a2 2 0 002 2h14a2 2 0 002-2V9a2 2 0 00-2-2h-3m-1 4l-3 3m0 0l-3-3m3 3V4" />
+                  </svg>
+                  {saving ? 'Saving...' : savedAgreementId ? 'Saved' : 'Save Agreement'}
+                </button>
+                <button
+                  onClick={handlePrint}
+                  className="px-6 py-2 bg-gradient-to-r from-blue-600 to-blue-800 text-white rounded-xl hover:from-blue-700 hover:to-blue-900 transition-colors flex items-center"
+                >
+                  <svg className="w-5 h-5 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 17h2a2 2 0 002-2v-4a2 2 0 00-2-2H5a2 2 0 00-2 2v4a2 2 0 002 2h2m2 4h6a2 2 0 002-2v-4a2 2 0 00-2-2H9a2 2 0 00-2 2v4a2 2 0 002 2zm8-12V5a2 2 0 00-2-2H9a2 2 0 00-2 2v4h10z" />
+                  </svg>
+                  Print Agreement
+                </button>
+              </>
             )}
           </div>
         </div>

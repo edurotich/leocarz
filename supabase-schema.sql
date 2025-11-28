@@ -43,6 +43,68 @@ INSERT INTO storage.buckets (id, name, public)
 VALUES ('car-images', 'car-images', true)
 ON CONFLICT (id) DO NOTHING;
 
+-- Create sales_agreements table for storing agreement records
+DROP TABLE IF EXISTS sales_agreements CASCADE;
+CREATE TABLE sales_agreements (
+  id UUID DEFAULT gen_random_uuid() PRIMARY KEY,
+  agreement_number TEXT UNIQUE NOT NULL,
+  car_id UUID REFERENCES cars(id) ON DELETE SET NULL,
+  
+  -- Car details snapshot (in case car is deleted later)
+  car_make TEXT NOT NULL,
+  car_model TEXT NOT NULL,
+  car_year INTEGER NOT NULL,
+  car_mileage INTEGER,
+  car_color TEXT,
+  car_transmission TEXT,
+  car_fuel_type TEXT,
+  car_condition TEXT,
+  car_image TEXT,
+  
+  -- Seller details
+  seller_name TEXT NOT NULL,
+  seller_id_type TEXT NOT NULL,
+  seller_id_number TEXT NOT NULL,
+  seller_kra_pin TEXT,
+  seller_phone TEXT NOT NULL,
+  seller_email TEXT,
+  seller_address TEXT NOT NULL,
+  
+  -- Buyer details
+  buyer_name TEXT NOT NULL,
+  buyer_id_type TEXT NOT NULL,
+  buyer_id_number TEXT NOT NULL,
+  buyer_kra_pin TEXT,
+  buyer_phone TEXT NOT NULL,
+  buyer_email TEXT,
+  buyer_address TEXT NOT NULL,
+  
+  -- Sale details
+  sale_price NUMERIC NOT NULL,
+  deposit_amount NUMERIC DEFAULT 0,
+  balance_amount NUMERIC NOT NULL,
+  payment_method TEXT NOT NULL,
+  sale_date DATE NOT NULL,
+  transfer_date DATE,
+  additional_terms TEXT,
+  
+  -- Witness details
+  witness_name TEXT,
+  witness_id TEXT,
+  witness_phone TEXT,
+  
+  -- Metadata
+  status TEXT DEFAULT 'active' CHECK (status IN ('active', 'completed', 'cancelled')),
+  created_at TIMESTAMP WITH TIME ZONE DEFAULT TIMEZONE('utc'::text, NOW()) NOT NULL,
+  updated_at TIMESTAMP WITH TIME ZONE DEFAULT TIMEZONE('utc'::text, NOW()) NOT NULL
+);
+
+-- Enable RLS for sales_agreements
+ALTER TABLE sales_agreements ENABLE ROW LEVEL SECURITY;
+
+-- Create policy for sales_agreements
+CREATE POLICY "Allow all operations on sales_agreements" ON sales_agreements FOR ALL USING (true) WITH CHECK (true);
+
 -- Create storage policies
 DO $$
 BEGIN
