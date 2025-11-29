@@ -8,13 +8,26 @@ import CarCard from './CarCard';
 
 export default function CarGrid() {
   const [cars, setCars] = useState<Car[]>([]);
+  const [displayedCars, setDisplayedCars] = useState<Car[]>([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
+  const [showAll, setShowAll] = useState(false);
   const searchParams = useSearchParams();
+
+  const INITIAL_DISPLAY_COUNT = 12; // Show 12 cars initially (4x3 grid)
 
   useEffect(() => {
     fetchCars();
   }, [searchParams]);
+
+  useEffect(() => {
+    // Update displayed cars when cars change or showAll toggles
+    if (showAll) {
+      setDisplayedCars(cars);
+    } else {
+      setDisplayedCars(cars.slice(0, INITIAL_DISPLAY_COUNT));
+    }
+  }, [cars, showAll]);
 
   const fetchCars = async () => {
     try {
@@ -65,6 +78,7 @@ export default function CarGrid() {
       if (error) throw error;
 
       setCars(data || []);
+      setShowAll(false); // Reset to initial view when new search is performed
     } catch (err) {
       console.error('Error fetching cars:', err);
       setError('Failed to load cars. Please try again.');
@@ -168,16 +182,46 @@ export default function CarGrid() {
   }
 
   return (
-    <div className="car-grid">
-      {cars.map((car, index) => (
-        <div 
-          key={car.id} 
-          className="animate-fade-in"
-          style={{ animationDelay: `${index * 100}ms` }}
-        >
-          <CarCard car={car} />
+    <div>
+      <div className="car-grid">
+        {displayedCars.map((car, index) => (
+          <div 
+            key={car.id} 
+            className="animate-fade-in"
+            style={{ animationDelay: `${index * 100}ms` }}
+          >
+            <CarCard car={car} />
+          </div>
+        ))}
+      </div>
+
+      {/* See More / Show Less Button */}
+      {cars.length > INITIAL_DISPLAY_COUNT && (
+        <div className="mt-12 text-center animate-fade-in">
+          <button
+            onClick={() => setShowAll(!showAll)}
+            className="group relative inline-flex items-center px-8 py-4 bg-gradient-to-r from-sky-600 to-blue-600 hover:from-sky-700 hover:to-blue-700 text-white font-semibold rounded-2xl shadow-lg hover:shadow-xl transition-all duration-300 hover:-translate-y-1"
+          >
+            <span className="mr-3">
+              {showAll ? 'Show Less' : `See More Cars (${cars.length - INITIAL_DISPLAY_COUNT} more)`}
+            </span>
+            <svg 
+              className={`w-5 h-5 transition-transform duration-300 ${showAll ? 'rotate-180' : ''}`}
+              fill="none" 
+              stroke="currentColor" 
+              viewBox="0 0 24 24"
+            >
+              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
+            </svg>
+          </button>
+          
+          {!showAll && (
+            <p className="mt-4 text-slate-600 text-sm">
+              Showing {displayedCars.length} of {cars.length} available cars
+            </p>
+          )}
         </div>
-      ))}
+      )}
     </div>
   );
 }
