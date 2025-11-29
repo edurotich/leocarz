@@ -4,9 +4,14 @@ import { useState, useEffect } from 'react';
 import { supabase } from '@/lib/supabase';
 import { CarWashEmployee, CarWashCommission } from '@/types/database';
 
+interface CommissionWithDetails extends CarWashCommission {
+  employee?: { name: string; employee_id: string };
+  job?: { job_number: string; customer_name: string; total_amount: number };
+}
+
 export default function EmployeeManagement() {
   const [employees, setEmployees] = useState<CarWashEmployee[]>([]);
-  const [commissions, setCommissions] = useState<CarWashCommission[]>([]);
+  const [commissions, setCommissions] = useState<CommissionWithDetails[]>([]);
   const [loading, setLoading] = useState(true);
   const [showAddForm, setShowAddForm] = useState(false);
   const [editingEmployee, setEditingEmployee] = useState<CarWashEmployee | null>(null);
