@@ -33,7 +33,7 @@ const CAR_MODELS_BY_MAKE: Record<string, string[]> = {
     'Wingroad', 'X-Trail', '370Z'
   ],
   'Mazda': [
-    'Atenza', 'Axela', 'Biante', 'BT-50', 'CX-3', 'CX-5', 'CX-7', 'CX-9', 'CX-30', 
+    'Atenza', 'Axela', 'Biante', 'BT-50', 'CX-3', 'CX-5', 'CX-7','CX-8', 'CX-9', 'CX-30', 
     'Demio', 'Familia', 'Flair', 'Mazda2', 'Mazda3', 'Mazda6', 'MPV', 'MX-5 Miata', 
     'Premacy', 'Roadster', 'RX-8', 'Tribute', 'Verisa'
   ],
