@@ -14,10 +14,10 @@ const CAR_MAKES = [
 
 const CAR_MODELS_BY_MAKE: Record<string, string[]> = {
   'Toyota': [
-    'Allion', 'Alphard', 'Aqua', 'Auris', 'Avanza', 'Axio', 'Belta', 'Camry', 'C-HR', 
+    'Allion', 'Alphard', 'Aqua', 'Auris', 'Avanza','Alford', 'Axio', 'Belta', 'Camry', 'C-HR', 
     'Coaster', 'Corolla', 'Crown', 'Fielder', 'Fortuner', 'Harrier', 'Hiace', 'Highlander', 
     'Hilux', 'Innova', 'IST', 'Land Cruiser', 'Mark X', 'Noah', 'Passo','Porte', 'Platz', 
-    'Prado', 'Premio', 'Prius', 'Probox', 'RAV4', 'Rush', 'Sienta', 'Spacio','Spade', 'Succeed', 
+    'Prado', 'Premio', 'Prius', 'Probox', 'RAV4', 'Rush','Rumion', 'Sienta', 'Spacio','Spade', 'Succeed','Starlet', 
     'Vanguard', 'Vellfire', 'Verso', 'Vitz', 'Voxy', 'Wish', 'Yaris'
   ],
   'Honda': [
@@ -35,7 +35,7 @@ const CAR_MODELS_BY_MAKE: Record<string, string[]> = {
   'Mazda': [
     'Atenza', 'Axela', 'Biante', 'BT-50', 'CX-3', 'CX-5', 'CX-7','CX-8', 'CX-9', 'CX-30', 
     'Demio', 'Familia', 'Flair', 'Mazda2', 'Mazda3', 'Mazda6', 'MPV', 'MX-5 Miata', 
-    'Premacy', 'Roadster', 'RX-8', 'Tribute', 'Verisa','Atenza'
+    'Premacy', 'Roadster', 'RX-8', 'Tribute', 'Verisa'
   ],
   'Subaru': [
     'Ascent', 'BRZ', 'Exiga', 'Forester', 'Impreza', 'Justy', 'Legacy', 'Levorg', 
