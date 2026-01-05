@@ -621,7 +621,7 @@ export default function CarForm({ car, onClose, onSaved }: CarFormProps) {
                       name="price"
                       required
                       min="0"
-                      step="50000"
+                      step="0.01"
                       value={formData.price}
                       onChange={handleInputChange}
                       className="form-input pl-12"
