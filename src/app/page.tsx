@@ -2,10 +2,13 @@ import { Suspense } from 'react';
 import Header from '@/components/Header';
 import CarGrid from '@/components/CarGrid';
 import SearchFilters from '@/components/SearchFilters';
+import FaqSection from '@/components/FaqSection';
+import FaqSchema from '@/components/FaqSchema';
 
 export default function HomePage() {
   return (
     <div className="min-h-screen bg-gradient-to-br from-slate-50 via-blue-50/20 to-sky-50/30">
+      <FaqSchema />
       <Header />
       
       {/* Premium Hero Section with Modern Glassmorphism */}
@@ -424,6 +427,9 @@ export default function HomePage() {
           </div>
         </div>
       </section>
+
+      {/* FAQ Section */}
+      <FaqSection />
       
       {/* Premium Footer */}
       <footer className="relative bg-gradient-to-br from-slate-900 via-slate-800 to-slate-900 text-slate-300 mt-0 overflow-hidden border-t border-slate-700/50">
