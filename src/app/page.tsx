@@ -37,14 +37,14 @@ export default function HomePage() {
             
             <div className="animate-fade-in">
               <h1 className="text-4xl lg:text-6xl font-bold text-white mb-4 leading-tight tracking-tight">
-                Find Your
+                Trusted Car Dealer in
                 <span className="bg-gradient-to-r from-sky-300 via-blue-400 to-cyan-300 bg-clip-text text-transparent ml-3">
-                  Dream Car
+                  Eldoret
                 </span>
               </h1>
               
               <p className="text-lg lg:text-xl text-slate-300/90 max-w-2xl mx-auto mb-8 leading-relaxed">
-                Premium vehicles • Verified dealers • Zero hidden costs • Instant financing
+                Used cars for sale in Eldoret • Imported cars from Japan to Kenya • Car importation on behalf • Affordable locally used cars
               </p>
               
               {/* Compact CTA Buttons */}
@@ -319,9 +319,114 @@ export default function HomePage() {
           </div>
         </section>
       </main>
+
+      {/* SEO Content Section */}
+      <section className="bg-white py-16 mt-16 border-t border-slate-200">
+        <div className="container mx-auto px-4 lg:px-8 max-w-6xl">
+          <div className="text-center mb-12">
+            <h2 className="text-3xl lg:text-4xl font-bold text-slate-900 mb-4">
+              Your Trusted Car Dealer in Eldoret, Kenya
+            </h2>
+            <div className="w-24 h-1 bg-gradient-to-r from-sky-500 to-blue-600 mx-auto"></div>
+          </div>
+
+          <div className="grid md:grid-cols-2 gap-8 mb-12">
+            <div className="bg-gradient-to-br from-slate-50 to-white p-8 rounded-2xl shadow-lg border border-slate-100">
+              <div className="flex items-center mb-4">
+                <div className="w-12 h-12 bg-gradient-to-br from-sky-500 to-blue-600 rounded-xl flex items-center justify-center mr-4">
+                  <svg className="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
+                  </svg>
+                </div>
+                <h3 className="text-xl font-bold text-slate-900">Used Cars for Sale in Eldoret</h3>
+              </div>
+              <p className="text-slate-600 leading-relaxed mb-4">
+                Looking for <strong>used cars for sale in Eldoret</strong>? LeoCarZ offers an extensive selection of 
+                quality pre-owned vehicles. As a <strong>trusted car dealer in Eldoret</strong>, we provide transparent 
+                pricing and comprehensive vehicle inspections on all our <strong>locally used cars in Eldoret</strong>.
+              </p>
+              <p className="text-slate-600 leading-relaxed">
+                Our inventory includes <strong>affordable cars in Eldoret</strong> across all makes and models. From 
+                compact sedans to spacious SUVs, find your perfect match at competitive prices.
+              </p>
+            </div>
+
+            <div className="bg-gradient-to-br from-slate-50 to-white p-8 rounded-2xl shadow-lg border border-slate-100">
+              <div className="flex items-center mb-4">
+                <div className="w-12 h-12 bg-gradient-to-br from-emerald-500 to-green-600 rounded-xl flex items-center justify-center mr-4">
+                  <svg className="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3.055 11H5a2 2 0 012 2v1a2 2 0 002 2 2 2 0 012 2v2.945M8 3.935V5.5A2.5 2.5 0 0010.5 8h.5a2 2 0 012 2 2 2 0 104 0 2 2 0 012-2h1.064M15 20.488V18a2 2 0 012-2h3.064M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+                  </svg>
+                </div>
+                <h3 className="text-xl font-bold text-slate-900">Imported Cars from Japan to Kenya</h3>
+              </div>
+              <p className="text-slate-600 leading-relaxed mb-4">
+                Specializing in <strong>imported cars from Japan to Kenya</strong>, LeoCarZ brings you premium Japanese 
+                vehicles at unbeatable prices. We handle complete <strong>car importation on behalf in Kenya</strong>, 
+                managing every step from auction purchase to delivery in Eldoret.
+              </p>
+              <p className="text-slate-600 leading-relaxed">
+                Our import service covers all documentation, shipping, customs clearance, and compliance. Trust our 
+                expertise in Japanese car imports to get you the best value for your investment.
+              </p>
+            </div>
+          </div>
+
+          <div className="bg-gradient-to-br from-blue-50 via-sky-50 to-slate-50 p-8 lg:p-12 rounded-2xl shadow-xl border border-sky-100">
+            <h3 className="text-2xl lg:text-3xl font-bold text-slate-900 mb-6 text-center">
+              Why Choose LeoCarZ as Your Car Dealer in Eldoret?
+            </h3>
+            <div className="grid md:grid-cols-3 gap-6">
+              <div className="text-center">
+                <div className="w-16 h-16 bg-gradient-to-br from-sky-500 to-blue-600 rounded-2xl flex items-center justify-center mx-auto mb-4 shadow-lg">
+                  <svg className="w-8 h-8 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
+                  </svg>
+                </div>
+                <h4 className="font-bold text-slate-900 mb-2">Verified Quality</h4>
+                <p className="text-sm text-slate-600">
+                  Every vehicle undergoes rigorous inspection to ensure quality and reliability
+                </p>
+              </div>
+              <div className="text-center">
+                <div className="w-16 h-16 bg-gradient-to-br from-emerald-500 to-green-600 rounded-2xl flex items-center justify-center mx-auto mb-4 shadow-lg">
+                  <svg className="w-8 h-8 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2m0-8c1.11 0 2.08.402 2.599 1M12 8V7m0 1v8m0 0v1m0-1c-1.11 0-2.08-.402-2.599-1M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+                  </svg>
+                </div>
+                <h4 className="font-bold text-slate-900 mb-2">Transparent Pricing</h4>
+                <p className="text-sm text-slate-600">
+                  No hidden fees. Clear, competitive pricing on all our vehicles
+                </p>
+              </div>
+              <div className="text-center">
+                <div className="w-16 h-16 bg-gradient-to-br from-purple-500 to-indigo-600 rounded-2xl flex items-center justify-center mx-auto mb-4 shadow-lg">
+                  <svg className="w-8 h-8 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M18.364 5.636l-3.536 3.536m0 5.656l3.536 3.536M9.172 9.172L5.636 5.636m3.536 9.192l-3.536 3.536M21 12a9 9 0 11-18 0 9 9 0 0118 0zm-5 0a4 4 0 11-8 0 4 4 0 018 0z" />
+                  </svg>
+                </div>
+                <h4 className="font-bold text-slate-900 mb-2">Full Service Support</h4>
+                <p className="text-sm text-slate-600">
+                  From import to ownership transfer, we handle everything for you
+                </p>
+              </div>
+            </div>
+          </div>
+
+          <div className="mt-12 text-center">
+            <p className="text-slate-600 leading-relaxed max-w-4xl mx-auto">
+              As the leading <strong>car dealer Eldoret</strong> residents trust, LeoCarZ has built a reputation for 
+              excellence in both local and import car sales. Whether you're looking for <strong>affordable cars in Eldoret</strong> 
+              or premium <strong>imported cars from Japan to Kenya</strong>, our team is dedicated to helping you find the 
+              perfect vehicle. Contact us today to explore our extensive inventory of <strong>locally used cars in Eldoret</strong> 
+              or inquire about our <strong>car importation on behalf in Kenya</strong> service.
+            </p>
+          </div>
+        </div>
+      </section>
       
       {/* Premium Footer */}
-      <footer className="relative bg-gradient-to-br from-slate-900 via-slate-800 to-slate-900 text-slate-300 mt-32 overflow-hidden border-t border-slate-700/50">
+      <footer className="relative bg-gradient-to-br from-slate-900 via-slate-800 to-slate-900 text-slate-300 mt-0 overflow-hidden border-t border-slate-700/50">
         {/* Background Pattern */}
         <div className="absolute inset-0 opacity-5">
           <div className="absolute inset-0" style={{

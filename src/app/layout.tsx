@@ -5,9 +5,28 @@ import JsonLd from '@/components/JsonLd';
 import { Analytics } from '@vercel/analytics/react';
 
 export const metadata: Metadata = {
-  title: "LeoCarZ - Premium Cars for Sale in Eldoret, Kenya",
-  description: "Find your perfect car at LeoCarZ. Browse our premium collection of quality vehicles in Eldoret, Kenya. New & used cars with verified dealers, transparent pricing, and exceptional customer service.",
-  keywords: ["cars for sale", "used cars Kenya", "new cars Eldoret", "car dealership Kenya", "LeoCarZ", "premium vehicles", "car sales Eldoret", "verified car dealers", "quality used cars", "car marketplace Kenya"],
+  title: "LeoCarZ - Trusted Car Dealer in Eldoret | Used Cars for Sale Kenya",
+  description: "Top trusted car dealer in Eldoret. Specializing in used cars for sale in Eldoret, imported cars from Japan to Kenya, and car importation on behalf. Affordable, locally used cars in Eldoret with transparent pricing. Your #1 car dealer Eldoret.",
+  keywords: [
+    "car dealer Eldoret",
+    "used cars for sale in Eldoret",
+    "imported cars from Japan to Kenya",
+    "car importation on behalf in Kenya",
+    "locally used cars in Eldoret",
+    "affordable cars in Eldoret",
+    "trusted car dealer in Eldoret",
+    "cars for sale Eldoret",
+    "Japanese cars Kenya",
+    "car dealers in Eldoret Kenya",
+    "buy cars in Eldoret",
+    "second hand cars Eldoret",
+    "car sales Eldoret",
+    "import cars from Japan Kenya",
+    "cheap cars in Eldoret",
+    "LeoCarZ Eldoret",
+    "car importers Kenya",
+    "quality used cars Eldoret"
+  ],
   authors: [{ name: "LeoCarZ" }],
   creator: "LeoCarZ",
   publisher: "LeoCarZ",
@@ -44,10 +63,10 @@ export const metadata: Metadata = {
     canonical: 'https://leocarz.com',
   },
   openGraph: {
-    title: 'LeoCarZ - Premium Cars for Sale in Eldoret, Kenya',
-    description: 'Find your perfect car at LeoCarZ. Browse our premium collection of quality vehicles in Eldoret, Kenya. New & used cars with verified dealers.',
+    title: 'LeoCarZ - Trusted Car Dealer Eldoret | Imported Cars from Japan',
+    description: 'Leading car dealer in Eldoret. Used cars for sale, imported cars from Japan to Kenya, car importation on behalf. Affordable & locally used cars in Eldoret.',
     url: 'https://leocarz.com',
-    siteName: 'LeoCarZ',
+    siteName: 'LeoCarZ - Trusted Car Dealer Eldoret',
     locale: 'en_KE',
     type: 'website',
     images: [
@@ -61,10 +80,12 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: 'summary_large_image',
-    title: 'LeoCarZ - Premium Cars for Sale in Eldoret, Kenya',
-    description: 'Find your perfect car at LeoCarZ. Browse our premium collection of quality vehicles in Eldoret, Kenya.',
+    title: 'LeoCarZ - Trusted Car Dealer Eldoret | Imported Japanese Cars',
+    description: 'Trusted car dealer in Eldoret. Used cars for sale, imported cars from Japan to Kenya. Affordable locally used cars in Eldoret.',
     images: ['https://leocarz.com/images/twitter-image.jpg'], // You'll need to create this
   },
+  metadataBase: new URL('https://leocarz.com'),
+  category: 'Automotive',
 };
 
 export default function RootLayout({
